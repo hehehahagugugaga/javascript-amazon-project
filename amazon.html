@@ -45,161 +45,114 @@
 
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
-          <div class="cart-quantity">3</div>
+          <div class="cart-quantity">0</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
     </div>
     
+  
     <div class="main">
       <div class="products-grid">
-        <div class="product-container">
-          <div class="product-image-container">
-            <img class="product-image"
-              src="images/products/athletic-cotton-socks-6-pairs.jpg">
-          </div>
-
-          <div class="product-name limit-text-to-2-lines">
-            Black and Gray Athletic Cotton Socks - 6 Pairs
-          </div>
-
-          <div class="product-rating-container">
-            <img class="product-rating-stars"
-              src="images/ratings/rating-45.png">
-            <div class="product-rating-count link-primary">
-              87
-            </div>
-          </div>
-
-          <div class="product-price">
-            $10.90
-          </div>
-
-          <div class="product-quantity-container">
-            <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-
-          <div class="product-spacer"></div>
-
-          <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
-
-          <button class="add-to-cart-button button-primary">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="product-container">
-          <div class="product-image-container">
-            <img class="product-image"
-              src="images/products/intermediate-composite-basketball.jpg">
-          </div>
-
-          <div class="product-name limit-text-to-2-lines">
-            Intermediate Size Basketball
-          </div>
-
-          <div class="product-rating-container">
-            <img class="product-rating-stars"
-              src="images/ratings/rating-40.png">
-            <div class="product-rating-count link-primary">
-              127
-            </div>
-          </div>
-
-          <div class="product-price">
-            $20.95
-          </div>
-
-          <div class="product-quantity-container">
-            <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-
-          <div class="product-spacer"></div>
-
-          <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
-
-          <button class="add-to-cart-button button-primary">
-            Add to Cart
-          </button>
-        </div>
-
-        <div class="product-container">
-          <div class="product-image-container">
-            <img class="product-image"
-              src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg">
-          </div>
-
-          <div class="product-name limit-text-to-2-lines">
-            Adults Plain Cotton T-Shirt - 2 Pack
-          </div>
-
-          <div class="product-rating-container">
-            <img class="product-rating-stars"
-              src="images/ratings/rating-45.png">
-            <div class="product-rating-count link-primary">
-              56
-            </div>
-          </div>
-
-          <div class="product-price">
-            $7.99
-          </div>
-
-          <div class="product-quantity-container">
-            <select>
-              <option selected value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
-
-          <div class="product-spacer"></div>
-
-          <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
-
-          <button class="add-to-cart-button button-primary">
-            Add to Cart
-          </button>
-        </div>
       </div>
     </div>
   </body>
+  <script>
+    let cart=[
+      {
+        image:"images/products/athletic-cotton-socks-6-pairs.jpg",
+        name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+        price: 1090,
+        quantity: 1,
+        stars:"images/ratings/rating-45.png",
+        ratingCount:87,
+      },
+      {
+        image:"images/products/intermediate-composite-basketball.jpg",
+        name: "Intermediate Size Basketball",
+        price: 2095,
+        quantity: 1,
+        stars:"images/ratings/rating-40.png",
+        ratingCount:127,
+      },
+      {
+        image:"images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+        name: "Adults Plain Cotton T-Shirt - 2 Pack",
+        price: 799,
+        quantity: 1,
+        stars:"images/ratings/rating-45.png",
+        ratingCount:56,
+      }
+    ];
+    let mainHTML='';
+    cart.forEach((item)=>{
+      mainHTML+=
+      `<div class="product-container">
+        <div class="product-image-container">
+          <img class="product-image"
+            src=${item.image}>
+        </div>
+
+        <div class="product-name limit-text-to-2-lines">
+          ${item.name}
+        </div>
+
+        <div class="product-rating-container">
+          <img class="product-rating-stars"
+            src=${item.stars}>
+          <div class="product-rating-count link-primary">
+            ${item.ratingCount}
+          </div>
+        </div>
+
+        <div class="product-price">
+          $${(item.price / 100).toFixed(2)}
+        </div>
+
+        <div class="product-quantity-container">
+          <select>
+            ${options()}
+          </select>
+        </div>
+
+        <div class="product-spacer"></div>
+
+        <div class="added-to-cart">
+          <img src="images/icons/checkmark.png">
+          Added
+        </div>
+
+        <button style="height:40px;" class="js-add-to-cart-button button-primary" onclick="addto(${item.ratingCount})">
+          Add to Cart
+        </button>
+      </div>`;
+       
+    
+    document.querySelector(".products-grid").innerHTML=mainHTML
+     });
+    let cq=0;
+    let checkout=[];
+    function addto(ratingCount){
+      let cq=Number(document.querySelector(".cart-quantity").innerHTML);
+      cq++;
+      document.querySelector(".cart-quantity").innerHTML=cq;
+      item=cart.find((item)=>item.ratingCount===ratingCount);
+      console.log(item.name);
+      checkout=[{
+        name:item.name,
+        price:item.price, 
+        quantity:item.quantity,
+        image:item.image,
+      }];
+    };
+    export {checkout};
+    
+    function options(){
+      let option="";
+      for(let i=1;i<=10;i++){
+        option+=`<option value=${i}>${i}</option>`;
+      }
+      return option;
+    }
+  </script>
 </html>
