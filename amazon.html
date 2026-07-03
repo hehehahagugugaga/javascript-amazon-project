@@ -131,21 +131,22 @@
     document.querySelector(".products-grid").innerHTML=mainHTML
      });
     let cq=0;
-    let checkout=[];
+  ;
+    let checkout= [];
     function addto(ratingCount){
       let cq=Number(document.querySelector(".cart-quantity").innerHTML);
       cq++;
       document.querySelector(".cart-quantity").innerHTML=cq;
-      item=cart.find((item)=>item.ratingCount===ratingCount);
+      const item=cart.find((item)=>item.ratingCount===ratingCount);
       console.log(item.name);
-      checkout=[{
+      checkout.push({
         name:item.name,
         price:item.price, 
         quantity:item.quantity,
         image:item.image,
-      }];
+      });
+      localStorage.setItem("checkout",JSON.stringify(checkout));
     };
-    
     function options(){
       let option="";
       for(let i=1;i<=10;i++){

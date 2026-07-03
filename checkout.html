@@ -88,28 +88,52 @@
     </div>
   </body>
   <script>
-    import { checkout } from "./amazon.html";
+    let checkout=JSON.parse(localStorage.getItem("checkout"));
+    let heilHTML='';
+    let check={};
     checkout.forEach(element => {
+      
+      if (!check[element.name]){
+        check[element.name] = [ element.quantity,
+          element.image,
+        element.price];
         
-      `
-        <div class="delivery-date">
+      }
+      else{
+        console.log("check[element.name][0]",check[element.name][0]);
+        let h = (check[element.name][0]);
+        h++;
+        check[element.name] = [element.quantity=h,
+          element.image, element.price];
+        return;
+      }
+    });
+    let k=0;
+    Object.keys(check).forEach(element => {
+      heilHTML+=code(element);
+    });
+      
+      document.querySelector(".cart-item-container").innerHTML+=heilHTML;
+
+    function code(element){
+      return `<div class="delivery-date">
           Delivery date: Tuesday, June 21
         </div>
 
         <div class="cart-item-details-grid">
           <img class="product-image"
-            src=${element.image}>
+            src=${check[element][1]}>
 
           <div class="cart-item-details">
             <div class="product-name">
               ${element.name}
             </div>
             <div class="product-price">
-              $${(element.price / 100).toFixed(2)}
+              $${(check[element][2] / 100).toFixed(2)}
             </div>
             <div class="product-quantity">
               <span>
-                Quantity: <span class="quantity-label">2</span>
+                Quantity: <span class="quantity-label">${check[element][0]}</span>
               </span>
               <span class="update-quantity-link link-primary">
                 Update
@@ -165,6 +189,7 @@
             </div>
           </div>
         </div>`
-      });
+    }
+    // localStorage.clear();
   </script>
 </html>
